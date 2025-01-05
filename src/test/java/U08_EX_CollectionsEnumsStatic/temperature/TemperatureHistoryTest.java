@@ -1,5 +1,7 @@
-package U08_EX_CollectionsEnumsStatic.temperatur.temperature;
+package U08_EX_CollectionsEnumsStatic.temperature;
 
+import U08_EX_CollectionsEnumsStatic.temperature.Temperature;
+import U08_EX_CollectionsEnumsStatic.temperature.TemperatureHistory;
 import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,4 +1,4 @@
-package U08_EX_CollectionsEnumsStatic.temperatur.element;
+package U08_EX_CollectionsEnumsStatic.element;
 
 /**
  * Represents the states of matter: solid, liquid, and gas.

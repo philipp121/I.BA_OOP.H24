@@ -1,4 +1,4 @@
-package U08_EX_CollectionsEnumsStatic.temperatur.temperature;
+package U08_EX_CollectionsEnumsStatic.temperature;
 
 public class Main {
     public static void main(String[] args) {

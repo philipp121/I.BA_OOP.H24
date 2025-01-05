@@ -1,4 +1,4 @@
-package U08_EX_CollectionsEnumsStatic.temperatur.element;
+package U08_EX_CollectionsEnumsStatic.element;
 
 public class Nitrogen extends Element {
 
