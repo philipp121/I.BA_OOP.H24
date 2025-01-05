@@ -12,6 +12,7 @@ class RoomTest {
         Room room = new Room(233, 20);
         assertEquals(233, room.getNumber());
         assertEquals(20, room.getCapacity());
+        assertEquals(RoomAccessibilityState.FREE, room.getAccessibilityState());
     }
 
     @Test
@@ -44,6 +45,53 @@ class RoomTest {
                 () -> new Room(341, 1)
         );
         assertEquals("Room capacity must be greater than 2.", exception.getMessage());
+    }
+
+    @Test
+    void setAccessibilityState_Free(){
+        Room room = new Room(110, 20);
+        room.setAccessibilityState(RoomAccessibilityState.FREE);
+        assertEquals(RoomAccessibilityState.FREE, room.getAccessibilityState());
+    }
+
+    @Test
+    void setAccessibilityState_Reserved(){
+        Room room = new Room(110, 20);
+        room.setAccessibilityState(RoomAccessibilityState.RESERVED);
+        assertEquals(RoomAccessibilityState.RESERVED, room.getAccessibilityState());
+    }
+
+    @Test
+    void setAccessibilityState_Blocked(){
+        Room room = new Room(110, 20);
+        room.setAccessibilityState(RoomAccessibilityState.BLOCKED);
+        assertEquals(RoomAccessibilityState.BLOCKED, room.getAccessibilityState());
+    }
+
+    @Test
+    void setAccessibilityState_NullThrowsIllegalArgumentException(){
+        Room room = new Room(110, 20);
+        NullPointerException exception = assertThrows(
+                NullPointerException.class,
+                () -> room.setAccessibilityState(null)
+        );
+        assertEquals("RoomAccessibilityState must not be null.", exception.getMessage());
+    }
+
+    @Test
+    void isRoomFree_ReturnsTrueWhenStateIsFree() {
+        Room room = new Room(345, 20);
+        room.setAccessibilityState(RoomAccessibilityState.FREE);
+
+        assertTrue(room.isRoomFree(), "The room should be free.");
+    }
+
+    @Test
+    void isRoomFree_ReturnsFalseWhenStateIsNotFree() {
+        Room room = new Room(102, 15);
+        room.setAccessibilityState(RoomAccessibilityState.RESERVED);
+
+        assertFalse(room.isRoomFree(), "The room should not be free.");
     }
 
     @Test
