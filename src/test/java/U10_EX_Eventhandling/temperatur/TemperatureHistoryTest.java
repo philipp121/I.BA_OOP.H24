@@ -294,7 +294,7 @@ class TemperatureHistoryTest {
      * Tests that no events are triggered when a temperature is added that is
      * neither a new minimum nor a new maximum, while accounting for the behavior
      * where:
-     *
+     * <p>
      * - The first temperature added always triggers both a MINIMUM and MAXIMUM event.
      * - Subsequent temperatures trigger events only if they establish a new minimum or maximum.
      * - Temperatures that fall between the current minimum and maximum do not trigger any events,
