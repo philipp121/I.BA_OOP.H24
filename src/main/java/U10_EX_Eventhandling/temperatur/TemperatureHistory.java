@@ -34,10 +34,15 @@ public final class TemperatureHistory {
     }
 
     /**
-     * Adds a temperature to the history.
+     * Adds a new temperature to the history and checks for temperature events.
+     * <p>
+     * This method first validates that the provided temperature is not null.
+     * It then checks if the new temperature triggers a new minimum or maximum event
+     * (via the checkForTemperatureEvent method). Finally, it adds the temperature
+     * to the history list for record-keeping.
      *
-     * @param temperature the temperature to add
-     * @throws NullPointerException if the provided temperature is {@code null}
+     * @param temperature the Temperature object to add to the history.
+     * @throws NullPointerException if the provided temperature is null.
      */
     public void addTemperature(Temperature temperature){
         if (temperature == null) {
@@ -235,6 +240,12 @@ public final class TemperatureHistory {
                 .orElse(null);
     }
 
+    /**
+     * Checks if the provided temperature triggers a new minimum or maximum event.
+     * Updates the current minimum or maximum temperature and notifies listeners if a new event is detected.
+     *
+     * @param temperature the Temperature object to be checked for min/max events.
+     */
     private void checkForTemperatureEvent(Temperature temperature){
         if (currentMin == null || temperature.compareTo(currentMin) < 0) {
             currentMin = temperature;
@@ -246,6 +257,13 @@ public final class TemperatureHistory {
         }
     }
 
+    /**
+     * Fires a temperature event to all registered listeners.
+     * Creates a TemperatureEvent and invokes the onTemperatureEvent method of each listener.
+     *
+     * @param temperature the Temperature object associated with the event.
+     * @param type        the type of the event (MINIMUM or MAXIMUM).
+     */
     private void fireTemperatureEvent(Temperature temperature, TemperatureEventType type) {
         TemperatureEvent event = new TemperatureEvent(this, temperature, type);
         for (TemperatureEventListener listener : listeners) {

@@ -1,10 +1,18 @@
 package U10_EX_Eventhandling.temperatur;
 
 /**
- * Enum representing the type of temperature event type.
+ * Enumeration of temperature event types.
+ * Indicates whether the event is related to a new minimum or maximum temperature.
  */
 public enum TemperatureEventType {
-    MINIMUM("Maximum"), MAXIMUM("Minimum");
+    /**
+     * Indicates a new minimum temperature has been detected.
+     */
+    MINIMUM("Maximum"),
+    /**
+     * Indicates a new maximum temperature has been detected.
+     */
+    MAXIMUM("Minimum");
 
     private final String description;
 

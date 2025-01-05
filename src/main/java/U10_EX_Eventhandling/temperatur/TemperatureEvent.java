@@ -4,7 +4,8 @@ import java.io.Serial;
 import java.util.EventObject;
 
 /**
- * Represents a temperature event, including its type (minimum or maximum).
+ * Represents an event related to temperature changes.
+ * This event is triggered when a new minimum or maximum temperature is detected.
  */
 public class TemperatureEvent extends EventObject {
     @Serial
@@ -14,14 +15,18 @@ public class TemperatureEvent extends EventObject {
     private final TemperatureEventType type;
 
     /**
-     * Constructor initializes the temperature event.
+     * Constructs a TemperatureEvent with the specified source, temperature, and type.
      *
-     * @param source      The object that generated the event.
-     * @param temperature The Temperature associated with the event.
-     * @param type        The type of the event (MINIMUM or MAXIMUM).
+     * @param source      the object on which the Event initially occurred.
+     * @param temperature the Temperature associated with this event.
+     * @param type        the type of the temperature event.
+     * @throws IllegalArgumentException if source, temperature, or type is null.
      */
     public TemperatureEvent(Object source, Temperature temperature, TemperatureEventType type) {
         super(source);
+        if (temperature == null || type == null) {
+            throw new IllegalArgumentException("Temperature and type cannot be null.");
+        }
         this.temperature = temperature;
         this.type = type;
     }
