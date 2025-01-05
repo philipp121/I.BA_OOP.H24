@@ -94,4 +94,39 @@ class RoomManagementTest {
         );
         assertTrue(exception.getMessage().contains("Room with number 542 does not exist"));
     }
+
+    @Test
+    void releaseRoom_SuccessfullyReleasesRoom() {
+        Room room = new Room(101, 20);
+        room.setAccessibilityState(RoomAccessibilityState.RESERVED);
+        roomManagement.addRoom(room);
+
+        assertTrue(roomManagement.releaseRoom(101));
+        assertTrue(room.isRoomFree());
+    }
+
+    @Test
+    void releaseRoom_AlreadyFreeRoom_ReturnsFalse() {
+        Room room = new Room(101, 20);
+        room.setAccessibilityState(RoomAccessibilityState.FREE);
+        roomManagement.addRoom(room);
+
+        assertFalse(roomManagement.releaseRoom(101));
+    }
+
+    @Test
+    void releaseRoom_NonExistingRoom_ReturnsFalse() {
+        assertFalse(roomManagement.releaseRoom(999));
+    }
+
+    @Test
+    void releaseRoom_WithRoomObject_ReleasesSuccessfully() {
+        Room room = new Room(101, 20);
+        room.setAccessibilityState(RoomAccessibilityState.RESERVED);
+        roomManagement.addRoom(room);
+
+        assertTrue(roomManagement.releaseRoom(room));
+        assertTrue(room.isRoomFree());
+    }
+
 }

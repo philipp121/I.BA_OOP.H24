@@ -7,7 +7,6 @@ import java.util.Objects;
  *
  * @author Philipp Schhüpach
  * @version 1.0.0
- * @use Use this class to create room objects.
  */
 public final class Room {
     private final int roomNumber;
@@ -18,7 +17,7 @@ public final class Room {
      * Constructs a Room Object.
      * It also checks if the passed roomNumber is between 100 and 999, if the passed roomCapacity is greater than 2
      * and throws an error if it is not the case.
-     * Constructs is package-private
+     * Constructor is package-private
      * @param roomNumber the Number of the room from 100 to 999.
      * @param roomCapacity the capacity of the room. Minimum 2.
      * @throws IllegalArgumentException if roomNumber is not between 100 and 999 and roomCapacity is not greater than 2
@@ -61,19 +60,6 @@ public final class Room {
     }
 
     /**
-     * Set the Room Accessibility State
-     * Method is package-private
-     * @param roomAccessibilityState the new Room Accessibility State.
-     * @throws IllegalArgumentException  if RoomAccessibilityState is null
-     */
-    void setAccessibilityState(RoomAccessibilityState roomAccessibilityState) {
-        this.roomAccessibilityState = Objects.requireNonNull(
-                roomAccessibilityState,
-                "RoomAccessibilityState must not be null."
-        );
-    }
-
-    /**
      * Checks whether the room is currently in a "FREE" state.
      *
      * @return {@code true} if the room's accessibility state is {@link RoomAccessibilityState#FREE},
@@ -95,6 +81,15 @@ public final class Room {
         return Objects.hashCode(roomNumber);
     }
 
+    @Override
+    public String toString() {
+        return "Room{" +
+                "roomNumber=" + roomNumber +
+                ", roomCapacity=" + roomCapacity +
+                ", roomAccessibilityState=" + roomAccessibilityState +
+                '}';
+    }
+
     /**
      * Validates if the passed roomNumber is between 100 and 999
      * @param roomNumber the Room Number to validate
@@ -104,5 +99,18 @@ public final class Room {
         if (roomNumber < 100 || roomNumber > 999) {
             throw new IllegalArgumentException("Room number must be between 100 and 999.");
         }
+    }
+
+    /**
+     * Set the Room Accessibility State
+     * Method is package-private
+     * @param roomAccessibilityState the new Room Accessibility State.
+     * @throws IllegalArgumentException  if RoomAccessibilityState is null
+     */
+    void setAccessibilityState(RoomAccessibilityState roomAccessibilityState) {
+        this.roomAccessibilityState = Objects.requireNonNull(
+                roomAccessibilityState,
+                "RoomAccessibilityState must not be null."
+        );
     }
 }
