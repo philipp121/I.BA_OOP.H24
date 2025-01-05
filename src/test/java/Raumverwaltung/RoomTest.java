@@ -1,0 +1,55 @@
+package Raumverwaltung;
+
+import nl.jqno.equalsverifier.EqualsVerifier;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class RoomTest {
+
+    @Test
+    void constructor_shouldInitializeFieldsCorrectly(){
+        Room room = new Room(233, 20);
+        assertEquals(233, room.getNumber());
+        assertEquals(20, room.getCapacity());
+    }
+
+    @Test
+    void constructor_shouldInitializeFieldsCorrectlyWithEdgeCasesHigh(){
+        Room room = new Room(999, 10);
+        assertEquals(999, room.getNumber());
+        assertEquals(10, room.getCapacity());
+    }
+
+    @Test
+    void constructor_shouldInitializeFieldsCorrectlyWithEdgeCasesLow(){
+        Room room = new Room(100, 15);
+        assertEquals(100, room.getNumber());
+        assertEquals(15, room.getCapacity());
+    }
+
+    @Test
+    void constructor_ThrowsIllegalArgumentExceptionRoomNumber(){
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> new Room(1000, 5)
+        );
+        assertEquals("Room number must be between 100 and 999.", exception.getMessage());
+    }
+
+    @Test
+    void constructor_ThrowsIllegalArgumentExceptionRoomCapacity(){
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> new Room(341, 1)
+        );
+        assertEquals("Room capacity must be greater than 2.", exception.getMessage());
+    }
+
+    @Test
+    void equalsContract() {
+        EqualsVerifier.forClass(Room.class)
+                .withOnlyTheseFields("roomNumber")
+                .verify();
+    }
+}
