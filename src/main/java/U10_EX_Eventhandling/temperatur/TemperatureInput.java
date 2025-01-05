@@ -46,18 +46,23 @@ public class TemperatureInput implements Runnable{
                 temperatureHistory.addTemperature(temperature);
             } catch (IllegalArgumentException e){
                 if ("exit".equalsIgnoreCase(input)){
-                    exit();
+                    exit(listener);
                 } else if (e instanceof NumberFormatException){
                     LOG.error("Input needs to be a number!");
                 }
             }
 
         } while (run);
-
     }
 
-    private void exit(){
+    private void exit(TemperatureEventListener listener){
         this.run = false;
+        try {
+            LOG.info("Removing listener...");
+            temperatureHistory.removeTemperatureEventListener(listener);
+        } catch (IllegalArgumentException e) {
+            LOG.error("Error removing listener: {}", e.getMessage());
+        }
         LOG.info(temperatureHistory.toFormattedString());
         LOG.info("Programm beendet.");
     }
