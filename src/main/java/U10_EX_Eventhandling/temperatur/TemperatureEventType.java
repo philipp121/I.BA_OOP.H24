@@ -4,6 +4,7 @@ package U10_EX_Eventhandling.temperatur;
  * Enumeration of temperature event types.
  * Indicates whether the event is related to a new minimum or maximum temperature.
  */
+@SuppressWarnings("unused")
 public enum TemperatureEventType {
     /**
      * Indicates a new minimum temperature has been detected.

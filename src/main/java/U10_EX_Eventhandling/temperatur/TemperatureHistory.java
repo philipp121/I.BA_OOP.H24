@@ -16,6 +16,7 @@ import java.util.Objects;
  * @use Use this class to manage a collection of temperatures, find min/max/average,
  *      or perform operations like clearing and replacing data.
  */
+@SuppressWarnings("unused")
 public final class TemperatureHistory {
     private static final Logger LOG = LoggerFactory.getLogger(TemperatureHistory.class);
 
