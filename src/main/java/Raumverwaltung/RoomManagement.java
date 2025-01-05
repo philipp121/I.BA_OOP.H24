@@ -14,6 +14,7 @@ import java.util.*;
  * @author Philipp Schhüpach
  * @version 1.0.0
  */
+@SuppressWarnings({"UnusedReturnValue", "unused"})
 public class RoomManagement {
 
     private static final Logger LOG = LoggerFactory.getLogger(RoomManagement.class);

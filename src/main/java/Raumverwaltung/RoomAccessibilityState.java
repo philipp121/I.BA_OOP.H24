@@ -8,6 +8,7 @@ package Raumverwaltung;
  * @version 1.0.0
  * @use Use this enum to represent room accessibility states in room reservation applications.
  */
+@SuppressWarnings("unused")
 public enum RoomAccessibilityState {
     /** A state that describes the accessibility of a Room as free*/
     FREE("Free"),
