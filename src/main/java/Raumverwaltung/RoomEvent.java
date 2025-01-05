@@ -1,5 +1,6 @@
 package Raumverwaltung;
 
+import java.io.Serial;
 import java.util.EventObject;
 
 /**
@@ -7,6 +8,13 @@ import java.util.EventObject;
  * This event is triggered when a room is reserved or freed up.
  */
 public class RoomEvent extends EventObject {
+
+    /**
+     * PS C:\Users\Philipp\IdeaProjects\I_BA_OOP_H24\target\classes> serialver Raumverwaltung.RoomEvent
+     * Raumverwaltung.RoomEvent:    private static final long serialVersionUID = 3482924422531497184L;
+     */
+    @Serial
+    private static final long serialVersionUID = 3482924422531497184L;
 
     private final Room room;
     private final int affectedSeats;
