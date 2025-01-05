@@ -1,0 +1,2 @@
+Already done in U10_EX_Eventhandling
+implements Comparable<Temperature> used in U08_EX_CollectionsEnumsStatic
