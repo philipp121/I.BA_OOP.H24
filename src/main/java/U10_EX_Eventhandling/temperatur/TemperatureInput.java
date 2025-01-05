@@ -3,7 +3,6 @@ package U10_EX_Eventhandling.temperatur;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.beans.PropertyChangeListener;
 import java.util.Scanner;
 
 public class TemperatureInput implements Runnable{
