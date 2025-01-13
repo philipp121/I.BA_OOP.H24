@@ -98,6 +98,16 @@ public class RoomManagement {
         LOG.info("Listener removed from Room Management.");
     }
 
+    /**
+     * Attempts to reserve a room that can accommodate the specified number of people.
+     * <p>
+     * If a suitable free room is found, it updates the room's accessibility state to RESERVED,
+     * triggers a room event with the room and the number of people, and returns true.
+     * If no suitable room is available, returns false.
+     *
+     * @param amountOfPeople The number of people requiring accommodation.
+     * @return true if a room is successfully reserved, false otherwise.
+     */
     public boolean reserveRoom(int amountOfPeople){
         Room room = findFreeRoomByCapacity(amountOfPeople);
         if (room == null){
