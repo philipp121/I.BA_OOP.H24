@@ -10,6 +10,7 @@ import java.util.EventObject;
 public class RoomEvent extends EventObject {
 
     /**
+     * Command for serialVersionUID:
      * PS C:\Users\Philipp\IdeaProjects\I_BA_OOP_H24\target\classes> serialver Raumverwaltung.RoomEvent
      * Raumverwaltung.RoomEvent:    private static final long serialVersionUID = 3482924422531497184L;
      */
